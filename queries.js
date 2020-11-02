@@ -8,8 +8,9 @@ const pool = new Pool({
   ssl:{rejectUnauthorized:false},
 })
 const getUsers = (request, response) => {
+    response.header("Access-Control-Allow-Origin", "*");
   pool.query('SELECT * FROM public.table ORDER BY id ASC', (error, results) => {
-      res.header("Access-Control-Allow-Origin", "*");
+      
     if (error) {
       throw error
     }
@@ -18,10 +19,11 @@ const getUsers = (request, response) => {
 }
 
 const getUserById = (request, response) => {
+    response.header("Access-Control-Allow-Origin", "*");
   const id = parseInt(request.params.id)
 
   pool.query('SELECT * FROM public.table WHERE id = $1', [id], (error, results) => {
-      res.header("Access-Control-Allow-Origin", "*");
+      
     if (error) {
       throw error
     }
