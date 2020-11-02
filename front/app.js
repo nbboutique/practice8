@@ -16,8 +16,8 @@ Firstname.onclick = function(){
     }
     else{
         if(num >= 12)num = 1; else num++;
-        $ajaxUtils.sendGetRequest("https://reqres.in/api/users/"+num,function(response){
-            const json =  JSON.parse(response.responseText);
+        $ajaxUtils.sendGetRequest("https://miro4ka.herokuapp.com/users/"+num,function(response){
+            const json =  (JSON.parse(response.responseText))[0];
             Firstname.innerText = json.data.first_name +" "+ json.data.last_name;            
             Email.innerText = json.data.email;
             Imag.src = json.data.avatar;
